@@ -1,0 +1,35 @@
+name: 功能建议
+description: 提议新的翻译能力、交互方式或兼容性改进
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的问题
+      description: 请描述当前遇到的具体场景，以及它为什么影响使用。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案
+      description: 你希望 TransLens 如何工作？
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 其他方案
+      description: 你是否尝试过其他扩展或临时解决办法？
+  - type: input
+    id: languages
+    attributes:
+      label: 相关语言或网站
+      placeholder: 例如 英语 → 中文、日语新闻网站
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我已经搜索过已有 Issue，没有找到相同建议。
+          required: true
