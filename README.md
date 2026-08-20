@@ -94,9 +94,12 @@ npm run check
 
 ### 开发版更新机制
 
-从 0.3.1 起，构建会在原位置更新 `dist`，不再删除这个已被 Chrome 监听的文件夹。普通网页使用固定加载器，并在每次刷新时用防缓存地址载入最新的 `core.js` 和 `content.js`。
+构建命令会在原位置更新 `dist`，不会删除 Chrome 正在监听的文件夹。普通网页使用固定加载器，每次刷新时会载入最新的 `core.js` 和 `content.js`。
 
-升级到 0.15.0 时需要在 `chrome://extensions` 中点击扩展卡片上的“重新加载”，Chrome 可能会重新确认普通网页访问权限。此版本会把旧配置迁移到自动检测源语言，并新增多语言源语言/目标语言设置；此前保存的 `sentence/paragraph` 悬停单位也会迁移为 `phrase`。此后修改交互代码并运行 `npm run build` 后，只需刷新测试网页即可载入最新运行代码；只有 `manifest.json`、`loader.js`、后台脚本或权限发生变化时，才需要重新加载扩展。若需要撤销旧版双模式试验，可解压并重新加载项目根目录中的 `translens-0.10.2-rollback.zip`。
+- 修改 `src/core.js`、`src/content.js` 或其他普通网页交互代码后，运行 `npm run build`，再刷新测试网页即可；
+- 修改 `manifest.json`、`src/loader.js`、后台脚本或扩展权限后，需要先在 `chrome://extensions` 中点击扩展卡片上的“重新加载”，再刷新测试网页；
+- 从旧版本升级到 `0.15.0` 时，首次重新加载扩展即可完成配置迁移：旧的源语言设置会迁移为自动检测，`sentence/paragraph` 悬停单位会迁移为 `phrase`；
+- 旧版本试验包和回滚压缩包不属于当前发行内容。需要比较历史行为时，请使用 Git 历史或 GitHub Releases 中明确标记的版本，不要将旧测试包放入项目根目录。
 
 ## 权限与隐私
 
