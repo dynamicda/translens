@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>译镜</title>
+    <link rel="stylesheet" href="ui.css">
+  </head>
+  <body class="popup">
+    <header>
+      <div>
+        <h1>译镜</h1>
+        <p>TransLens</p>
+      </div>
+      <label class="switch" aria-label="全局启用译镜">
+        <input id="globalEnabled" type="checkbox">
+        <span class="switch-track"></span>
+      </label>
+    </header>
+
+    <main>
+      <div id="pageState" class="notice">正在读取当前页面…</div>
+
+      <label class="field">
+        <span>翻译引擎</span>
+        <select id="engine">
+          <option value="mock">交互演示（仅测试页）</option>
+          <option value="local">Chrome 本地翻译</option>
+        </select>
+      </label>
+      <div id="engineState" class="engine-state">正在检查翻译状态…</div>
+      <button id="prepareLocal" class="secondary" hidden>准备本地翻译</button>
+
+      <button id="toggleSite" class="secondary">在此网站禁用</button>
+      <button id="openOptions" class="link">更多设置</button>
+      <div class="notice compact-help">把鼠标停在英文上即可查看译文。更多手势与显示效果可在设置中调整。</div>
+    </main>
+
+    <footer><span data-modifier-key>Alt/Option</span> 点按开关 · 按住轻点整句 · 拖动精确选择</footer>
+    <script src="local-model.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
