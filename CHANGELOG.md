@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+
+- 简化开发版构建、刷新和扩展重新加载说明。
+- 移除对旧版回滚压缩包的使用引导；历史版本仅通过 Git 历史或 GitHub Releases 保留。
+
 ## 0.15.0 — 2026-08-04
 
 ### Added
