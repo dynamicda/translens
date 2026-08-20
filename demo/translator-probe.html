@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>Translator API probe</title>
+  </head>
+  <body>
+    <main>
+      <h1>Translator API 状态</h1>
+      <p id="status">检查中</p>
+      <p id="result"></p>
+    </main>
+    <script>
+      (async () => {
+        const status = document.querySelector('#status');
+        if (!globalThis.Translator) {
+          status.textContent = 'unsupported';
+          return;
+        }
+        try {
+          const availability = await globalThis.Translator.availability({
+            sourceLanguage: 'en',
+            targetLanguage: 'zh'
+          });
+          status.textContent = availability;
+          if (availability === 'available') {
+            const translator = await globalThis.Translator.create({
+              sourceLanguage: 'en',
+              targetLanguage: 'zh'
+            });
+            document.querySelector('#result').textContent = await translator.translate(
+              'The company plans to release the product later this year.'
+            );
+            translator.destroy?.();
+          }
+        } catch {
+          status.textContent = 'error';
+        }
+      })();
+    </script>
+  </body>
+</html>
