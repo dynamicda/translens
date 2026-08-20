@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+coverage/
+*.log
+*.zip
+*.tgz
+*.env
+.env.*
+!.env.example
+dist/
+*.crx
+*.pem
