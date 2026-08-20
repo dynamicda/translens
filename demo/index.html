@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" content="notranslate">
+    <title>TransLens interaction demo</title>
+    <style>
+      :root { color-scheme: light dark; font-family: Georgia, serif; }
+      body { max-width: 760px; margin: 64px auto; padding: 0 24px; line-height: 1.7; }
+      main { padding: 32px; border: 1px solid #bbb6; border-radius: 16px; }
+      h1 { margin-top: 0; line-height: 1.2; }
+      .dark { margin-top: 24px; padding: 20px; color: #f7f8fb; background: #172033; border-radius: 12px; }
+      input { width: 100%; box-sizing: border-box; padding: 10px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>TransLens interaction demo</h1>
+      <p>Hover over this sentence to open the translation lens. Moving the pointer away restores the uninterrupted reading view.</p>
+      <p>The company plans to release the product later this year.</p>
+      <p>One year ago, most Claude usage took the form of a conversation between a user and an assistant.</p>
+      <div class="dark">
+        TransLens only translates the sentence you are currently reading.
+      </div>
+      <p>This sentence wraps across multiple lines so the prototype can verify that a longer sentence is still located as one continuous translation target when the browser lays it out over more than one visual line.</p>
+      <p>Hold Alt or Option and drag across part of this sentence to replace only the selected passage in place.</p>
+      <p>The input below must never be translated:</p>
+      <input value="This editable text should remain untouched.">
+    </main>
+    <script src="../src/core.js?v=70"></script>
+    <script src="../src/local-model.js?v=70"></script>
+    <script src="chrome-shim.js?v=70"></script>
+    <script src="../src/content.js?v=70"></script>
+  </body>
+</html>
