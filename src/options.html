@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>译镜设置</title>
+    <link rel="stylesheet" href="ui.css">
+  </head>
+  <body class="options">
+    <main class="settings-card">
+      <header>
+        <div>
+          <h1>译镜设置</h1>
+          <p>TransLens · 本地优先 · 隐私保护</p>
+        </div>
+      </header>
+
+      <section class="quick-start">
+        <h2>快速开始</h2>
+        <ol>
+          <li>选择源语言和目标语言；源语言可以保持“自动检测”。</li>
+          <li>点击下方“准备本地翻译”，等待对应语言包就绪。</li>
+          <li>打开或刷新外语网页后译镜会自动就绪，不需要先点击插件图标。</li>
+          <li>点按 <span data-modifier-key>Alt/Option</span> 开启悬停；按住后轻点可固定整句。</li>
+        </ol>
+        <div id="quickStartStatus" class="onboarding-status">正在检查本地翻译能力…</div>
+      </section>
+
+      <section>
+        <h2>基本设置</h2>
+        <label class="field">
+          <span>悬停翻译范围</span>
+          <select id="translationUnit">
+            <option value="phrase">语义短语（单词附近）</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>悬停等待</span>
+          <span class="range-row">
+            <input id="hoverDelay" type="range" min="0" max="600" step="20">
+            <output id="hoverDelayValue"></output>
+          </span>
+        </label>
+        <label class="field">
+          <span>墨迹揭示范围</span>
+          <span class="range-row">
+            <input id="inkSize" type="range" min="40" max="300" step="10">
+            <output id="inkSizeValue"></output>
+          </span>
+        </label>
+        <label class="field">
+          <span>毛笔笔迹粗细</span>
+          <span class="range-row">
+            <input id="brushSize" type="range" min="12" max="48" step="2">
+            <output id="brushSizeValue"></output>
+          </span>
+        </label>
+        <p class="privacy">悬停只翻译鼠标所在单词附近的短语。默认墨迹范围为 120 px，可缩小至 40 px。点按 <span data-modifier-key>Alt/Option</span> 可切换悬停墨迹；按住后轻点会吸附整句，也可以向任意方向涂抹并累积选择文字。</p>
+      </section>
+
+      <section>
+        <h2>语言</h2>
+        <label class="field">
+          <span>源语言</span>
+          <select id="sourceLanguage"></select>
+        </label>
+        <label class="field">
+          <span>目标语言</span>
+          <select id="targetLanguage"></select>
+        </label>
+        <p id="languageSupport" class="privacy">自动检测会根据鼠标所在句子的上下文判断源语言；Chrome 会按语言对按需准备本地语言包。</p>
+      </section>
+
+      <section>
+        <h2>翻译引擎</h2>
+        <label class="choice">
+          <input type="radio" name="engine" value="mock">
+          <span><strong>交互演示</strong><small>仅用于项目测试页，不会为任意网页生成占位译文</small></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="engine" value="local">
+          <span><strong>Chrome 本地翻译</strong><small>需要浏览器支持，首次使用可能下载语言模型</small></span>
+        </label>
+        <div class="model-card">
+          <div class="model-heading">
+            <div>
+              <strong id="languagePairLabel">自动检测 → 简体中文</strong>
+              <small id="localModelDetail">正在检查本地翻译能力…</small>
+            </div>
+            <span id="localModelStatus" class="status-pill">检查中</span>
+          </div>
+          <div id="localModelProgress" class="model-progress" hidden>
+            <span></span>
+          </div>
+          <button id="prepareLocal" type="button" class="secondary">准备本地翻译</button>
+        </div>
+        <p class="privacy">本地模式不会把悬停文字上传到服务器。输入框、密码框和可编辑区域始终跳过。</p>
+      </section>
+
+      <div class="actions">
+        <button id="save">保存设置</button>
+        <button id="reset" class="secondary">恢复默认</button>
+        <span id="saved" role="status"></span>
+      </div>
+    </main>
+    <script src="core.js"></script>
+    <script src="languages.js"></script>
+    <script src="local-model.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
